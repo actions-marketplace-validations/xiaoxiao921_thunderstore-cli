@@ -1,0 +1,45 @@
+name: 'ThunderstoreCLI - TEST'
+description: 'A Github action for the Thunderstore CLI - TEST'
+branding:
+  icon: server
+  color: blue
+inputs:
+  file:
+    description: 'If provided, use defined package instead of building.'
+    required: false
+  token:
+    description: 'Authentication token to use for publishing.'
+    required: false
+  repository:
+    description: '(Default: https://thunderstore.io) URL of the repository where to publish.'
+    required: false
+  config-path:
+    description: '(Default: ./thunderstore.toml) Path for the project configuration file.'
+    required: false
+  package-name:
+    description: 'Name for the package'
+    required: false
+  package-namespace:
+    description: 'Namespace for the package'
+    required: false
+  package-version:
+    description: 'Version number for the package'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - '--file'
+  - ${{ inputs.file }}
+  - '--token'
+  - ${{ inputs.token }}
+  - '--repository'
+  - ${{ inputs.repository }}
+  - '--config-path'
+  - ${{ inputs.config-path }}
+  - '--package-name'
+  - ${{ inputs.package-name }}
+  - '--package-namespace'
+  - ${{ inputs.package-namespace }}
+  - '--package-version'
+  - ${{ inputs.package-version }}
