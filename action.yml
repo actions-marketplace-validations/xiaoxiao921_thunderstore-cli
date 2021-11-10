@@ -29,6 +29,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+  - 'publish'
   - '--file'
   - ${{ inputs.file }}
   - '--token'
