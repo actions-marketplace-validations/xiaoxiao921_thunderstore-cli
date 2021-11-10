@@ -14,4 +14,4 @@ LABEL com.github.actions.color="blue"
 # Relayer the .NET SDK, anew with the build output
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 COPY --from=build-env /out .
-ENTRYPOINT [ "dotnet", "/tcli.dll" ]
+ENTRYPOINT [ "dotnet", "/tcli.dll" "publish"]
