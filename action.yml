@@ -4,12 +4,18 @@ branding:
   icon: server
   color: blue
 inputs:
-  args:
-    description: 'publish args, example : --token tss_XXX'
+  package-version:
+    description: 'Version number for the package.'
+    required: true
+  token:
+    description: 'Authentication token to use for publishing.'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
   - 'publish'
-  - ${{ inputs.args }}
+  - --package-version
+  - ${{ inputs.package-version }}
+  - '--token'
+  - ${{ inputs.token }}
